@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts for Editorial Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdfbf7',
+                            100: '#f7f2e8',
+                            200: '#eee3d0',
+                            300: '#e1cdb0',
+                            400: '#ceaa7c',
+                            500: '#ba8850',
+                            600: '#9e6739',
+                            700: '#7e4c2f',
+                            800: '#693e2b',
+                            900: '#4b2a1e',
+                            burgundy: '#7c2a24',
+                            deepburgundy: '#5a1d18',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        serif: ['"Noto Serif KR"', 'serif'],
+                        editorial: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Alex Brush"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #F8F5EE;
+            --card-bg: #FFFFFF;
+            --text-primary: #231F20;
+            --text-muted: #726A64;
+            --accent-burgundy: #7C2A24;
+            --accent-sand: #EAE3D2;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Noto Sans KR', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Essential content pre-wrap styling to retain paragraphs & whitespace */
+        .content {
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.85;
+            color: #332d29;
+            font-size: 1.05rem;
+        }
+
+        /* Subtle Smooth Fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F5EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D9D1C2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8AC98;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-burgundy selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#F8F5EE]/90 backdrop-blur-md border-b border-[#E8E1D1] transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Blog Title -->
+            <a href="/" class="group flex items-center gap-3 transition-transform duration-300">
+                <div class="w-10 h-10 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-sans font-bold text-sm">쑥</i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-brand-burgundy group-hover:opacity-90 transition-opacity">쑥쑤기^^</span>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-600 font-editorial">Dog & Human Connection</span>
+                </div>
+            </a>
+
+            <!-- Right Controls & Write Button -->
+            <div class="flex items-center gap-4">
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+                    <a href="/" class="hover:text-brand-burgundy transition-colors">홈</a>
+                    <a href="/" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">교감 이야기</a>
+                    <a href="/" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">마음 신호</a>
+                </nav>
+
+                <!-- Write Button preserving exact Flask URL and class -->
+                <a class="button inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-burgundy text-white font-medium text-sm shadow-md hover:bg-brand-deepburgundy hover:shadow-lg transition-all active:scale-95" href="/write">
+                    <i class="fa-solid fa-pen-nib text-xs"></i>
+                    <span>글쓰기</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Back Link Bar -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full">
+        <a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-brand-burgundy transition-colors group">
+            <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm group-hover:border-brand-burgundy group-hover:bg-brand-burgundy group-hover:text-white transition-all">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+            </span>
+            <span>← 글 목록으로</span>
+        </a>
+    </div>
+
+    <!-- Main Reading Container -->
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow animate-fade-in">
+        
+        <article class="bg-white rounded-3xl p-6 sm:p-12 border border-[#EBE4D5] shadow-sm relative overflow-hidden">
+            
+            <!-- Category Tag & Metadata -->
+            <div class="flex flex-wrap items-center justify-between gap-3 text-xs border-b border-gray-100 pb-6 mb-6">
+                <div class="flex items-center gap-2">
+                    <span class="px-3 py-1 rounded-full bg-amber-50 text-brand-700 font-semibold border border-amber-200/70 tracking-wide">
+                        🐾 강아지 교감 노트
+                    </span>
+                    <span class="text-gray-300">•</span>
+                    <span class="text-gray-500 flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-user-pen text-brand-burgundy text-[11px]"></i> 쑥쑥이맘
+                    </span>
+                </div>
+                
+                <!-- Preserved Jinja created_at -->
+                <p class="date text-gray-400 font-mono text-xs flex items-center gap-1.5">
+                    <i class="fa-regular fa-clock text-gray-400"></i>
+                    <span>{{ post.created_at }}</span>
+                </p>
+            </div>
+
+            <!-- Preserved Jinja Title -->
+            <h1 class="font-serif text-2xl sm:text-4xl font-extrabold text-gray-900 leading-snug tracking-tight mb-8">
+                {{ post.title }}
+            </h1>
+
+            <!-- Decorative Divider -->
+            <div class="w-12 h-1 bg-brand-burgundy/80 rounded-full mb-8"></div>
+
+            <!-- Preserved Jinja Content Body -->
+            <div class="content font-sans text-gray-800 leading-relaxed min-h-[220px]">
+{{ post.content }}
+            </div>
+
+            <!-- Post Footer & Share / Back Actions -->
+            <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                
+                <!-- Main Back Link preserving exact URL -->
+                <a href="/" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F8F5EE] hover:bg-brand-burgundy hover:text-white text-gray-700 text-sm font-medium transition-all shadow-sm group">
+                    <i class="fa-solid fa-list text-xs group-hover:-translate-x-0.5 transition-transform"></i>
+                    <span>← 글 목록으로</span>
+                </a>
+
+                <!-- Interactive Details -->
+                <div class="flex items-center gap-3 text-gray-400 text-sm">
+                    <button class="w-10 h-10 rounded-full bg-[#F9F7F2] hover:bg-amber-50 hover:text-brand-burgundy border border-gray-200 flex items-center justify-center transition-colors shadow-sm" title="좋아요">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full bg-[#F9F7F2] hover:bg-amber-50 hover:text-brand-burgundy border border-gray-200 flex items-center justify-center transition-colors shadow-sm" title="공유하기">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- Author Profile Box below Article -->
+        <div class="mt-8 bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-[#EBE4D5] shadow-sm flex flex-col sm:flex-row items-center gap-5">
+            <div class="w-16 h-16 rounded-full overflow-hidden shrink-0 ring-2 ring-brand-burgundy/20">
+                <img 
+                    src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=400&auto=format&fit=crop" 
+                    alt="쑥쑥이맘 프로필" 
+                    class="w-full h-full object-cover"
+                >
+            </div>
+            <div class="text-center sm:text-left space-y-1">
+                <div class="flex items-center justify-center sm:justify-start gap-2">
+                    <h4 class="font-serif font-bold text-gray-900 text-base">쑥쑥이맘</h4>
+                    <span class="text-[11px] px-2 py-0.5 rounded bg-brand-100 text-brand-800 font-medium">에디터</span>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed font-light">
+                    강아지의 소소한 눈빛과 행동 신호를 관찰하고 기록합니다. 소중한 반려견과 따뜻한 마음을 나누는 일상을 담습니다 🐾
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="mt-16 bg-[#201B18] text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-sm">쑥</span>
+                <span class="font-serif text-xl font-bold text-white tracking-tight">쑥쑤기^^</span>
+            </div>
+            <p class="text-xs text-gray-500 max-w-md mx-auto font-light leading-relaxed">
+                강아지와의 눈빛, 행동, 소통을 기록하며 진정한 차원의 교감을 나누는 보금자리입니다.
+            </p>
+            <div class="pt-4 border-t border-gray-800/80 text-[11px] text-gray-500">
+                <p>&copy; 쑥쑤기^^ All rights reserved. Powered by Flask & Jinja Templates.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

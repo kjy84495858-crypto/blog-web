@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새 글 쓰기 | 쑥쑤기^^</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts for Editorial Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdfbf7',
+                            100: '#f7f2e8',
+                            200: '#eee3d0',
+                            300: '#e1cdb0',
+                            400: '#ceaa7c',
+                            500: '#ba8850',
+                            600: '#9e6739',
+                            700: '#7e4c2f',
+                            800: '#693e2b',
+                            900: '#4b2a1e',
+                            burgundy: '#7c2a24',
+                            deepburgundy: '#5a1d18',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        serif: ['"Noto Serif KR"', 'serif'],
+                        editorial: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Alex Brush"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #F8F5EE;
+            --card-bg: #FFFFFF;
+            --text-primary: #231F20;
+            --text-muted: #726A64;
+            --accent-burgundy: #7C2A24;
+            --accent-sand: #EAE3D2;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Noto Sans KR', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F5EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D9D1C2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8AC98;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-burgundy selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#F8F5EE]/90 backdrop-blur-md border-b border-[#E8E1D1] transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Blog Title -->
+            <a href="/" class="group flex items-center gap-3 transition-transform duration-300">
+                <div class="w-10 h-10 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-sans font-bold text-sm">쑥</i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-brand-burgundy group-hover:opacity-90 transition-opacity">쑥쑤기^^</span>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-600 font-editorial">Dog & Human Connection</span>
+                </div>
+            </a>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-4">
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+                    <a href="/" class="hover:text-brand-burgundy transition-colors">홈</a>
+                    <a href="#" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">교감 이야기</a>
+                    <a href="#" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">마음 신호</a>
+                </nav>
+
+                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-burgundy/30 text-brand-burgundy font-medium text-xs hover:bg-brand-burgundy hover:text-white transition-all" href="/">
+                    <i class="fa-solid fa-house text-xs"></i>
+                    <span>블로그 홈</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Writing Page Banner Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4 w-full">
+        <div class="relative w-full h-[220px] sm:h-[260px] rounded-3xl overflow-hidden shadow-xl hero-bg flex flex-col justify-between p-6 sm:p-10 text-white animate-fade-in">
+            
+            <div class="flex justify-between items-start">
+                <span class="glass-pill px-4 py-1.5 rounded-full text-xs font-semibold text-gray-900 tracking-wider uppercase shadow-sm">
+                    ✍️ 교감 노트 작성
+                </span>
+                <span class="text-xs tracking-widest font-editorial opacity-90 hidden sm:inline-block">
+                    JOURNAL EDITOR
+                </span>
+            </div>
+
+            <div class="space-y-1 max-w-2xl">
+                <p class="font-script text-2xl sm:text-3xl text-amber-100 opacity-95">Record Your Connection</p>
+                <h2 class="font-serif text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight drop-shadow-md">
+                    강아지와의 따뜻한 교감을 기록해보세요
+                </h2>
+                <p class="text-xs sm:text-sm font-light opacity-90 pt-1">
+                    반려견의 소중한 눈빛, 행동 신호, 함께한 시간을 자유롭게 적어보세요.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs text-amber-100/80 pt-1 border-t border-white/20">
+                <i class="fa-solid fa-feather text-amber-300"></i>
+                <span>소중한 추억과 깨달음을 함께 나눕니다</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Side: Main Form Area (8 Cols) -->
+            <section class="lg:col-span-8">
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#EBE4D5] shadow-sm">
+                    
+                    <div class="flex items-center justify-between pb-4 mb-6 border-b border-[#E5DEC9]">
+                        <h1 class="font-serif text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square text-brand-burgundy text-lg"></i>
+                            <span>새 글 작성하기</span>
+                        </h1>
+                        <span class="text-xs text-gray-400 font-editorial uppercase tracking-widest">Article Editor</span>
+                    </div>
+
+                    <!-- Flask Post Form (Functionality Unchanged) -->
+                    <form method="post" class="space-y-6">
+                        
+                        <!-- Title Field -->
+                        <div>
+                            <label class="block text-xs font-semibold text-brand-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                <i class="fa-solid fa-heading text-brand-burgundy"></i>
+                                <span>글 제목</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                name="title" 
+                                placeholder="제목을 입력하세요 (예: 오늘 쑥쑥이가 보여준 따뜻한 카밍신호)" 
+                                required
+                                class="w-full px-4 py-3.5 bg-[#F9F7F2] border border-[#E2DAD0] rounded-xl text-gray-800 font-medium text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-brand-burgundy/30 focus:border-brand-burgundy transition-all placeholder:text-gray-400 placeholder:font-normal"
+                            >
+                        </div>
+
+                        <!-- Content Field -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="text-xs font-semibold text-brand-700 uppercase tracking-wider flex items-center gap-1.5">
+                                    <i class="fa-solid fa-align-left text-brand-burgundy"></i>
+                                    <span>글 내용</span>
+                                </label>
+                                <!-- Visual Editor Decorative Toolbar -->
+                                <div class="flex items-center gap-3 text-xs text-gray-400">
+                                    <span title="에디터 서식"><i class="fa-solid fa-bold hover:text-gray-700 cursor-pointer"></i></span>
+                                    <span title="기호"><i class="fa-solid fa-paw hover:text-brand-burgundy cursor-pointer"></i></span>
+                                    <span title="인용구"><i class="fa-solid fa-quote-left hover:text-gray-700 cursor-pointer"></i></span>
+                                </div>
+                            </div>
+                            
+                            <textarea 
+                                name="content" 
+                                placeholder="강아지와 나눈 소중한 교감 이야기, 소통 경험, 혹은 행동 관찰 기록을 적어주세요..." 
+                                required
+                                class="w-full min-h-[360px] p-4 bg-[#F9F7F2] border border-[#E2DAD0] rounded-xl text-gray-800 text-sm sm:text-base leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-burgundy/30 focus:border-brand-burgundy transition-all placeholder:text-gray-400 resize-y font-light"
+                            ></textarea>
+                        </div>
+
+                        <!-- Buttons Area -->
+                        <div class="pt-6 border-t border-[#EBE4D5] flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+                            <!-- Back Link -->
+                            <a href="/" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors text-sm font-medium">
+                                <i class="fa-solid fa-arrow-left text-xs"></i>
+                                <span>메인페이지로 돌아가기</span>
+                            </a>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-brand-burgundy text-white font-medium text-sm shadow-md hover:bg-brand-deepburgundy hover:shadow-lg transition-all active:scale-95">
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                                <span>저장하기</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+
+            <!-- Right Side: Sidebar Widgets (4 Cols) -->
+            <aside class="lg:col-span-4 space-y-6">
+                
+                <!-- Writing Tips Box -->
+                <div class="bg-white rounded-2xl p-6 border border-[#EBE4D5] shadow-sm">
+                    <h4 class="font-serif font-bold text-base text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center justify-between">
+                        <span>글 작성 팁</span>
+                        <i class="fa-solid fa-lightbulb text-amber-500 text-sm"></i>
+                    </h4>
+                    
+                    <ul class="space-y-3.5 text-xs text-gray-600 leading-relaxed font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-brand-burgundy font-bold text-sm">•</span>
+                            <span><strong>상황 자세히 적기:</strong> 강아지의 당시 행동, 귀 모양, 꼬리 각도 등 신호 표현을 함께 기록해보세요.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-brand-burgundy font-bold text-sm">•</span>
+                            <span><strong>나의 대처 공유하기:</strong> 강아지의 신호에 반려인이 어떻게 행동했는지 나누면 큰 도움이 됩니다.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-brand-burgundy font-bold text-sm">•</span>
+                            <span><strong>따뜻한 언어 쓰기:</strong> 다정하고 진솔한 어조는 더욱 감동적인 교감 기록을 만들어줍니다.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Community Banner -->
+                <div class="bg-gradient-to-br from-brand-burgundy to-brand-deepburgundy text-white rounded-2xl p-6 shadow-md relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 text-8xl">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest uppercase bg-white/20 px-2.5 py-1 rounded-full text-amber-100">
+                        쑥쑤기 교감 공간
+                    </span>
+                    <h5 class="font-serif font-bold text-lg mt-3 mb-2">이야기가 모여 온기가 됩니다</h5>
+                    <p class="text-xs text-amber-100/90 leading-relaxed font-light">
+                        작성해주신 글은 블로그 홈 메인 리스트에 공개되어 다른 반려인들과 따뜻하게 공유됩니다.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="mt-16 bg-[#201B18] text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-sm">쑥</span>
+                <span class="font-serif text-xl font-bold text-white tracking-tight">쑥쑤기^^</span>
+            </div>
+            <p class="text-xs text-gray-500 max-w-md mx-auto font-light leading-relaxed">
+                강아지와의 눈빛, 행동, 소통을 기록하며 진정한 차원의 교감을 나누는 보금자리입니다.
+            </p>
+            <div class="pt-4 border-t border-gray-800/80 text-[11px] text-gray-500">
+                <p>&copy; 쑥쑤기^^ All rights reserved. Powered by Flask & Jinja Templates.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

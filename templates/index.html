@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쑥쑤기^^ | 강아지와 마음을 나누는 교감 블로그</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts for Editorial Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdfbf7',
+                            100: '#f7f2e8',
+                            200: '#eee3d0',
+                            300: '#e1cdb0',
+                            400: '#ceaa7c',
+                            500: '#ba8850',
+                            600: '#9e6739',
+                            700: '#7e4c2f',
+                            800: '#693e2b',
+                            900: '#4b2a1e',
+                            burgundy: '#7c2a24',
+                            deepburgundy: '#5a1d18',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        serif: ['"Noto Serif KR"', 'serif'],
+                        editorial: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Alex Brush"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #F8F5EE;
+            --card-bg: #FFFFFF;
+            --text-primary: #231F20;
+            --text-muted: #726A64;
+            --accent-burgundy: #7C2A24;
+            --accent-sand: #EAE3D2;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Noto Sans KR', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Editorial Image Overlay & Glassmorphism */
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%), url('https://images.unsplash.com/photo-1534361960057-19889db98d18?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 35%;
+        }
+
+        /* Card Hover Effects */
+        .post-card-item {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .post-card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(124, 42, 36, 0.12);
+        }
+
+        .post-card-item:hover .post-title-text {
+            color: var(--accent-burgundy);
+        }
+
+        /* Subtle Smooth Fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F5EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D9D1C2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8AC98;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-burgundy selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#F8F5EE]/90 backdrop-blur-md border-b border-[#E8E1D1] transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Blog Title -->
+            <a href="/" class="group flex items-center gap-3 transition-transform duration-300">
+                <div class="w-10 h-10 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-sans font-bold text-sm">쑥</i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-brand-burgundy group-hover:opacity-90 transition-opacity">쑥쑤기^^</span>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-600 font-editorial">Dog & Human Connection</span>
+                </div>
+            </a>
+
+            <!-- Right Controls & Write Button -->
+            <div class="flex items-center gap-4">
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+                    <a href="/" class="hover:text-brand-burgundy transition-colors">홈</a>
+                    <a href="#" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">교감 이야기</a>
+                    <a href="#" class="hover:text-brand-burgundy transition-colors opacity-75 hover:opacity-100">마음 신호</a>
+                </nav>
+
+                <!-- Write Button preserving exact Flask URL and class -->
+                <a class="button inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-burgundy text-white font-medium text-sm shadow-md hover:bg-brand-deepburgundy hover:shadow-lg transition-all active:scale-95" href="/write">
+                    <i class="fa-solid fa-pen-nib text-xs"></i>
+                    <span>글쓰기</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Editorial Hero Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4 w-full">
+        <div class="relative w-full h-[320px] sm:h-[400px] rounded-3xl overflow-hidden shadow-xl hero-bg flex flex-col justify-between p-6 sm:p-10 text-white animate-fade-in">
+            
+            <!-- Top Tag Pill -->
+            <div class="flex justify-between items-start">
+                <span class="glass-pill px-4 py-1.5 rounded-full text-xs font-semibold text-gray-900 tracking-wider uppercase shadow-sm">
+                    ✨ 반려견 교감 노트
+                </span>
+                <span class="text-xs tracking-widest font-editorial opacity-90 hidden sm:inline-block">
+                    SEOUL / KOREA
+                </span>
+            </div>
+
+            <!-- Hero Branding Overlay -->
+            <div class="space-y-2 max-w-2xl">
+                <p class="font-script text-3xl sm:text-4xl text-amber-100 opacity-95">Heart to Heart Connection</p>
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight drop-shadow-md">
+                    강아지의 눈빛으로<br>마음을 읽는 행복한 시간
+                </h2>
+                <p class="text-sm sm:text-base font-light opacity-90 pt-1 line-clamp-2">
+                    단순한 훈련을 넘어, 강아지와 깊은 마음으로 소통하고 교감하는 따뜻한 소통 기록 공간입니다.
+                </p>
+            </div>
+
+            <!-- Bottom Sub text -->
+            <div class="flex items-center gap-3 text-xs text-amber-100/80 pt-2 border-t border-white/20">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-paw text-amber-300"></i> 반려견 시선으로 이해하기
+                </span>
+                <span>•</span>
+                <span>소통 & 행동 심리</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+        <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-sm border border-[#E8E1D1]">
+            <form action="/" method="get" class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        name="keyword" 
+                        value="{{ keyword }}" 
+                        placeholder="강아지 교감, 행동 신호, 마음 나누기 검색..."
+                        class="w-full pl-11 pr-4 py-3 bg-[#F9F7F2] border border-[#E2DAD0] rounded-xl text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-burgundy/30 focus:border-brand-burgundy transition-all placeholder:text-gray-400"
+                    >
+                </div>
+                <button type="submit" class="px-7 py-3 bg-gray-900 hover:bg-brand-burgundy text-white font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm">
+                    <span>검색</span>
+                </button>
+            </form>
+
+            <!-- Search Status Notice -->
+            {% if keyword %}
+                <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
+                    <p>
+                        <i class="fa-solid fa-filter text-brand-burgundy mr-1"></i>
+                        <strong class="text-brand-burgundy font-semibold">“{{ keyword }}”</strong> 검색 결과입니다.
+                    </p>
+                    <a href="/" class="text-xs text-gray-400 hover:text-gray-700 underline">전체보기</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Side: Article List (8 Cols) -->
+            <section class="lg:col-span-8 space-y-6">
+                
+                <!-- Section Header -->
+                <div class="flex items-center justify-between pb-3 border-b border-[#E5DEC9]">
+                    <h3 class="font-serif text-xl font-bold text-gray-900 flex items-center gap-2">
+                        <i class="fa-solid fa-feather-pointed text-brand-burgundy text-base"></i>
+                        <span>최근 교감 기록</span>
+                    </h3>
+                    <span class="text-xs text-gray-500 font-editorial tracking-wider">LATEST STORIES</span>
+                </div>
+
+                <!-- Flask Loop over Posts -->
+                <div class="space-y-5">
+                    {% for post in posts %}
+                        <article class="post post-card-item bg-white rounded-2xl p-6 sm:p-7 border border-[#EBE4D5] shadow-sm relative overflow-hidden group">
+                            <a href="/post/{{ post.id }}" class="block">
+                                
+                                <!-- Top Meta Badge -->
+                                <div class="flex items-center justify-between text-xs text-gray-400 mb-3">
+                                    <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-brand-700 font-medium border border-amber-200/60">
+                                        🐾 강아지 소통
+                                    </span>
+                                    <span class="date flex items-center gap-1 font-mono text-[11px] text-gray-400">
+                                        <i class="fa-regular fa-clock"></i> {{ post.created_at }}
+                                    </span>
+                                </div>
+
+                                <!-- Article Title -->
+                                <h2 class="post-title-text font-serif text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-brand-burgundy transition-colors leading-snug">
+                                    {{ post.title }}
+                                </h2>
+
+                                <!-- Article Content Snippet -->
+                                <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-5 line-clamp-3 font-light">
+                                    {{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}
+                                </p>
+
+                                <!-- Read More CTA Footer -->
+                                <div class="flex items-center justify-between pt-4 border-t border-gray-100 text-xs font-medium text-brand-burgundy">
+                                    <span class="flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                        이야기 더보기 <i class="fa-solid fa-arrow-right-long"></i>
+                                    </span>
+                                    <span class="text-gray-300 font-normal">쑥쑤기^^</span>
+                                </div>
+                            </a>
+                        </article>
+                    {% else %}
+                        <!-- Empty State Box -->
+                        <div class="empty py-16 px-6 text-center bg-white rounded-2xl border border-dashed border-gray-300">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-50 flex items-center justify-center text-brand-burgundy text-2xl">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+                            <p class="text-gray-600 font-medium text-lg mb-2">
+                                {% if keyword %}
+                                    '{{ keyword }}'에 해당하는 교감 기록을 찾을 수 없습니다.
+                                {% else %}
+                                    아직 작성된 교감 기록이 없습니다.
+                                {% endif %}
+                            </p>
+                            <p class="text-gray-400 text-sm mb-6">
+                                {% if keyword %}
+                                    다른 키워드로 검색하거나 전체 목록을 확인해보세요.
+                                {% else %}
+                                    강아지와 나눈 첫 소통 이야기를 기록해보세요!
+                                {% endif %}
+                            </p>
+                            <a href="/write" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-burgundy text-white text-sm font-medium hover:bg-brand-deepburgundy transition-colors shadow-sm">
+                                <i class="fa-solid fa-plus"></i> 첫 글 작성하러 가기
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Right Side: Profile & Category Sidebar (4 Cols) -->
+            <aside class="lg:col-span-4 space-y-6">
+                
+                <!-- Blog Profile Card -->
+                <div class="bg-white rounded-2xl p-6 border border-[#EBE4D5] shadow-sm text-center">
+                    <div class="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden p-1 ring-2 ring-brand-burgundy/20">
+                        <img 
+                            src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=400&auto=format&fit=crop" 
+                            alt="쑥쑤기 프로필" 
+                            class="w-full h-full object-cover rounded-full"
+                        >
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-gray-900 mb-1">쑥쑥이맘</h4>
+                    <p class="text-xs text-brand-burgundy font-medium tracking-wide uppercase mb-3">Blog Editor & Companion</p>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-5 font-light">
+                        반려견의 소소한 행동 신호와 눈빛 언어를 탐구합니다. 강아지와 함께 더 깊이 교감하고 행복해지는 법을 나눕니다 🐾
+                    </p>
+                    
+                    <div class="pt-4 border-t border-gray-100 flex justify-center gap-3 text-gray-400 text-sm">
+                        <span class="hover:text-brand-burgundy cursor-pointer transition-colors"><i class="fa-solid fa-heart"></i></span>
+                        <span class="hover:text-brand-burgundy cursor-pointer transition-colors"><i class="fa-solid fa-share-nodes"></i></span>
+                        <span class="hover:text-brand-burgundy cursor-pointer transition-colors"><i class="fa-solid fa-envelope"></i></span>
+                    </div>
+                </div>
+
+                <!-- Category / Topic Tags Widget -->
+                <div class="bg-white rounded-2xl p-6 border border-[#EBE4D5] shadow-sm">
+                    <h4 class="font-serif font-bold text-base text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center justify-between">
+                        <span>주요 소통 테마</span>
+                        <i class="fa-solid fa-tags text-xs text-gray-400"></i>
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 카밍신호
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 눈빛소통
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 바디랭귀지
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 강아지행동
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 반려견스킨십
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-[#F8F5EE] text-gray-700 text-xs font-medium hover:bg-brand-burgundy hover:text-white transition-colors cursor-pointer">
+                            # 산책교감
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Dog Tip Banner -->
+                <div class="bg-gradient-to-br from-brand-burgundy to-brand-deepburgundy text-white rounded-2xl p-6 shadow-md relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 text-8xl">
+                        <i class="fa-solid fa-dog"></i>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest uppercase bg-white/20 px-2.5 py-1 rounded-full text-amber-100">
+                        오늘의 교감 팁
+                    </span>
+                    <h5 class="font-serif font-bold text-lg mt-3 mb-2">하품도 대화가 되나요?</h5>
+                    <p class="text-xs text-amber-100/90 leading-relaxed font-light">
+                        강아지가 긴장했을 때 하품을 하며 상대방을 안심시키곤 합니다. 똑같이 하품해보세요!
+                    </p>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="mt-16 bg-[#201B18] text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-brand-burgundy text-white flex items-center justify-center font-bold text-sm">쑥</span>
+                <span class="font-serif text-xl font-bold text-white tracking-tight">쑥쑤기^^</span>
+            </div>
+            <p class="text-xs text-gray-500 max-w-md mx-auto font-light leading-relaxed">
+                강아지와의 눈빛, 행동, 소통을 기록하며 진정한 차원의 교감을 나누는 보금자리입니다.
+            </p>
+            <div class="pt-4 border-t border-gray-800/80 text-[11px] text-gray-500">
+                <p>&copy; 쑥쑤기^^ All rights reserved. Powered by Flask & Jinja Templates.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
